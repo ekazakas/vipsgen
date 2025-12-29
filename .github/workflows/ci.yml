@@ -8,7 +8,7 @@ on:
 
 jobs:
   generate:
-    name: Generate bindings for libvips ${{ matrix.vips_version }}
+    name: Generate code for libvips ${{ matrix.vips_version }}
     runs-on: ubuntu-24.04
     strategy:
       matrix:
@@ -130,7 +130,7 @@ jobs:
       - name: Generate vips package
         run: |
           mkdir -p ${{ matrix.output_dir }}
-          ./bin/vipsgen -out ${{ matrix.output_dir }}
+          ./bin/vipsgen -out ${{ matrix.output_dir }} --include-test
 
       - name: Run tests
         run: |
