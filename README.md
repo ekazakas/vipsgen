@@ -345,7 +345,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ### Development Workflow
 
-When contributing to vipsgen, **do not commit the generated code** in the `vips/` directory (except `vips/vips_test.go`). The development workflow is designed to keep generated code separate from source code. The repository uses GitHub Actions to automatically handle code generation when PRs are created.
+When contributing to vipsgen, **do not commit the generated code** in the `vips*` directory. The development workflow is designed to keep generated code separate from source code. The repository uses GitHub Actions to automatically handle code generation when PRs are created.
 
 ## Special Thanks to `govips`
 
