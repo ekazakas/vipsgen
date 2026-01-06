@@ -129,7 +129,7 @@ func NewImageFromSource(s *Source, options *LoadOptions) (*Image, error) {
 	if options == nil {
 		options = DefaultLoadOptions()
 	}
-	vipsImage, err := vipsgenImageFromSource(s.src, options)
+	vipsImage, err := vipsgenImageFromSource(s.source, options)
 	if err != nil {
 		return nil, err
 	}
