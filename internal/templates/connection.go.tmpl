@@ -16,7 +16,7 @@ import (
 type Source struct {
 	reader io.ReadCloser
 	seeker io.Seeker
-	source *C.VipsSourceCustom
+	src    *C.VipsSourceCustom
 	ptr    unsafe.Pointer
 	lock   sync.Mutex
 }
@@ -29,9 +29,9 @@ func NewSource(reader io.ReadCloser) *Source {
 	seeker, ok := reader.(io.ReadSeeker)
 	if ok {
 		s.seeker = seeker
-		s.source = C.create_go_custom_source_with_seek(s.ptr)
+		s.src = C.create_go_custom_source_with_seek(s.ptr)
 	} else {
-		s.source = C.create_go_custom_source(s.ptr)
+		s.src = C.create_go_custom_source(s.ptr)
 	}
 	return s
 }
@@ -43,7 +43,7 @@ func (s *Source) Close() {
 	}
 	s.lock.Lock()
 	if s.ptr != nil {
-		C.clear_source(&s.source)
+		C.clear_source(&s.src)
 		pointer.Unref(s.ptr)
 		s.ptr = nil
 		s.lock.Unlock()
